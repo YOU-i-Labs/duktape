@@ -61,6 +61,14 @@ target_include_directories(
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/src>"
 )
 
+if (MSVC)
+    target_compile_options(
+        duktape
+        PRIVATE
+        "/sdl-"
+    )
+endif()
+
 install(
     TARGETS duktape
     EXPORT "${TARGETS_EXPORT_NAME}"
