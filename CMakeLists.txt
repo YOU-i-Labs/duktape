@@ -16,6 +16,8 @@ set(project_config "${generated_dir}/${PROJECT_NAME}Config.cmake")
 set(TARGETS_EXPORT_NAME "${PROJECT_NAME}Targets")
 set(namespace "${PROJECT_NAME}::")
 
+option(USE_DUKTAPE_MODULE_EXTRA "Use the duktape module extra." OFF)
+
 include(CMakePackageConfigHelpers)
 
 # Use:
@@ -54,6 +56,8 @@ install(
 ### }
 
 add_library(duktape src/duktape.c ${headers})
+
+add_subdirectory(extras)
 
 target_include_directories(
     duktape
